@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Edit Colors</title>
+    <style>
+        #saveButton {
+            font-size: 2em; /* Increase font size */
+            padding: 10px 20px;
+        }
+        body {
+            background-color: gray;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        .color-field {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Edit Colors</h1>
+    <div class="color-field">
+        <label for="evenColor">Even Rows Background Color:</label>
+        <input type="text" id="evenColor" placeholder="#f58d72">
+    </div>
+    <div class="color-field">
+        <label for="oddColor">Odd Rows Background Color:</label>
+        <input type="text" id="oddColor" placeholder="#fcda81">
+    </div>
+    <div class="color-field">
+        <label for="textColor">Text Color:</label>
+        <input type="text" id="textColor" placeholder="#000000">
+    </div>
+    <button id="saveButton">Save Colors</button>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('/colors')
+                .then(response => response.json())
+                .then(colors => {
+                    document.getElementById('evenColor').value = colors.evenColor;
+                    document.getElementById('oddColor').value = colors.oddColor;
+                    document.getElementById('textColor').value = colors.textColor;
+                })
+                .catch(error => {
+                    console.error('Failed to load colors:', error);
+                });
+
+            document.getElementById('saveButton').addEventListener('click', () => {
+                const colors = {
+                    evenColor: document.getElementById('evenColor').value,
+                    oddColor: document.getElementById('oddColor').value,
+                    textColor: document.getElementById('textColor').value,
+                };
+
+                fetch('/save-colors', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(colors)
+                })
+                .then(response => response.text())
+                .then(result => {
+                    if (result === 'Colors saved successfully') {
+                        alert('Colors saved successfully');
+                    } else {
+                        alert(result);
+                    }
+                })
+                .catch(error => {
+                    alert('Failed to save colors');
+                    console.error(error);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
