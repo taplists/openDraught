@@ -10,7 +10,7 @@ Per installing tradition, just click next a bunch of times when installing Node 
 
 ◘◘◘◘
 
-Once Node is installed > double click openDraught to launch openDraught and launch a browser window with your taplist in it
+Once Node is installed > double click openDraught to launch openDraught which will automatically launch a browser window with your taplist in it
 
 ◘◘◘◘
 
