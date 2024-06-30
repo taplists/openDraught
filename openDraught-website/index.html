@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>openDraught</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <img src="openDraught.png">
+    </header>
+    
+    <section class="top-right-button">
+        <a href="frontend.html" class="btn2">Login</a>
+    </section>
+    <main>
+        <section class="intro">
+            <h1><font color="orange"><font size=9>Welcome</font></font></h1>
+            <br>openDraught is a free and open-source digital tap list web application designed for the service industry, with a focus on mobile compatibility and ease of use. This project was initially created to showcase the development capabilities of ChatGPT 4o.
+            <br>
+            <br>The application is designed for Windows 10 but should work on most Windows versions. It is intended to be run on an old computer you might have lying around or a cheap PC stick. Simply connect this computer via HDMI to a TV or monitor mounted in portrait orientation. Right click your Windows Desktop and press Display Settings, then select Display Orientation to change computer to Portrait mode.
+            <br>
+            <br>
+            <p><font color="orange">Explore the different versions of openDraught 1.1 below. Each version is tailored to specific needs and provides unique functionalities. Click the buttons to download or view the source code on GitHub.</font>
+            <br><br>
+            <hr>
+            <br><h2><font color="white">What does using openDraught look like?</h2>           
+            <br><b>Using this program is as easy as : </b></font>
+            <br><font color="orange">
+            <br>• Leaving it running on your computer connected to your tap list screen (we'll call this the host machine.)
+            <br>
+            <br>• When it's time to edit the list, your bartender can just pull their phone out, open the browser, and type your tap list address in like they were going to a website.
+            <br></font>Your tap list address will be the IP address of your host machine plus port 3000
+            <br>That would look something like this typed into the browser on the phone: <b><font color="#cde450">192.168.1.110:3000/admin.html</b></font>
+            <br><font color="orange">
+            <br>• You'll then be brought to a login page where you put in your password.
+            <br>
+            <br>• After which you'll be brought to your list of beers.
+            <br>
+            <br>• Press the Edit button and you'll be able to edit any of the text fields making your list fully customizable.</font>
+            <br>
+            <br><font size="4" color="white">While this whole thing may seem complicated. Once the initial setup is done it really is as easy as clicking a button on your phone and editing the tap list.
+            <br>
+            <br>Grab your nearest IT friend, have them make openDraught run on startup on your host machine. Make a bookmark to the tap list address on your phone, and boom you can edit your tap list at the click of a button.
+            <br>Once you get comfortable there's even a page to edit the colors of the tap list on your phone. 
+            <br>Replace banner.png in the files too to slap your own banner on top.</font>
+        </p>
+        </section>
+        <section class="main-section">
+            <div class="content">
+                <p><br><font color="yellow"><b>*Note:</b> No matter which version you choose, it is recommended to change the admin password and secure string. You can do this by opening server.js with a text editor (like Notepad)
+                    <br>
+                    <br>Then modify the const ADMIN_PASSWORD line and replacing your_secure_password with a password of your choice.
+                    <br>
+                    <br>Followed by modifying the secret: line below that and replacing 
+                    <br>s2K7m1!xY9t#Vw$3b4E%Fg@8RkLpQ with a 30 character random string of your choice. There is a random string generator I've included in this project called random-string-gen, that will open in your web browser and let you generate a key to put in server.js.
+            </p>
+            </div>
+        </section>
+        <section class="main-section">
+            <div class="content">
+                <h2><font color="white">openDraught 1.1 - Standalone version</font></h2>
+                <br>
+                <p>This is the simplest version of openDraught. It includes an installer for Node.js, which installs the Node JavaScript runtime environment necessary to run openDraught. Once Node is installed, you can run openDraught. openDraught will display your taplist on a screen in your bar and create a mini server that makes your taplist accessible locally on your network (with a password). This allows your bartender or manager to use their phone to modify the taplist by entering the IP address and port into their phone's web browser.
+                <br>
+                <br>It is recommended to setup a static IP on your router for the device running openDraught since you'll need to enter the IP on your phone as if you were going to a website, and if the IP changes then you obviously won't know what it is.
+            </p>
+            </div>
+            <div class="buttons">
+                <a href="#" class="btn">Download Package</a>
+                <a href="#" class="btn">View on GitHub</a>
+            </div>
+        </section>
+        <section class="main-section">
+            <div class="content">
+                <h2><font color=white>openDraught 1.1 - Standalone with Google Reporting</font></h2>
+                <br>
+                <p>This has all the features of the Standalone version plus capability to automatically write the local IP address of the device running openDraught, directly to a Google Doc on your Google account. This uses Google Doc API.
+                <br>
+                <br>This version is for users that can not set a static IP on their network and need a remote way to see the address needed to modify the taplist via openDraught.
+                <br>Documentation for this API setup can be found in a PDF in the project folder.
+            </p>
+            </div>
+            <div class="buttons">
+                <a href="#" class="btn">Download Package</a>
+                <a href="#" class="btn">View on GitHub</a>
+            </div>
+        </section>
+        <section class="main-section">
+            <div class="content">
+                <h2><font color=white>openDraught 1.1 - Containerized version</font></h2>
+                <br>
+                <p>This is the most technical version of openDraught. It is the Standalone version that is also set up to be composed into a Docker container. Inside the project is a readme for setting up container hosting via DigitalOcean using their Droplets. openDraught uses virtually no resources making hosting a container little cost. Average cost to host this on DigitalOcean is $4/month.
+                <br>
+                <br>Running this in a container is advantageous because it provides a static IP address from DigitalOcean, eliminating concerns about address changes. Additionally, hosting the container on the internet enhances security by avoiding local server hosting. This setup is the most secure way to use openDraught.
+             </p>
+            </div>
+            <div class="buttons">
+                <a href="#" class="btn">Download Package</a>
+                <a href="#" class="btn">View on GitHub</a>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>This is an open-source collaborative project designed to demonstrate LLM dev capabilities. Users assume all risk. Caution should be exercised when deploying and modifying openDraught.</p>
+    </footer>
+</body>
+</html>

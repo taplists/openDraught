@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="180">
+    <title>Tap List</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="banner">
+        <img src="banner.png" alt="Business Name" id="business-name">
+    </div>
+    <div class="tap-list" id="tap-list">
+        <!-- Beers will be dynamically inserted here -->
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('/colors')
+                .then(response => response.json())
+                .then(colors => {
+                    document.documentElement.style.setProperty('--even-line-color', colors.evenColor);
+                    document.documentElement.style.setProperty('--odd-line-color', colors.oddColor);
+                    document.documentElement.style.setProperty('--text-color', colors.textColor);
+
+                    fetch('/beers')
+                        .then(response => response.json())
+                        .then(beers => {
+                            const tapListDiv = document.getElementById('tap-list');
+                            beers.forEach((beer, index) => {
+                                if (beer.hide) return; // Skip hidden beers
+                                const beerDiv = document.createElement('div');
+                                beerDiv.classList.add('beer');
+                                if (beer.empty) {
+                                    beerDiv.classList.add('faded');
+                                }
+                                beerDiv.innerHTML = `
+                                    <p>
+                                        <span class="number">${index + 1}.&nbsp;&nbsp;</span>
+                                        <span class="name">${beer.name}</span>
+                                        <span class="by"> by </span>
+                                        <span class="brewery">${beer.brewery} - ${beer.type} - ${beer.abv}</span>
+                                    </p>`;
+                                tapListDiv.appendChild(beerDiv);
+                            });
+                        });
+                });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+:root {
+    --odd-line-color: #eefbff; /* Default color */ 
+    --even-line-color: #dde8eb; /* Default color */
+    --text-color: #000000; /* Default text color */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000; /* Black background */
+    color: var(--text-color); /* Text color */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+}
+
+.banner {
+    width: 100%;
+    text-align: center;
+    margin: 20px 0;
+}
+
+#business-name {
+    max-width: 100%;
+    height: auto;
+}
+
+.tap-list {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.beer {
+    padding: 10px 0;
+    background-color: var(--odd-line-color); /* Light yellow background for odd items */
+    color: var(--text-color); /* Text color */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.beer:nth-child(even) {
+    background-color: var(--even-line-color); /* Light red background for even items */
+}
+
+.beer p {
+    margin: 0;
+    padding: 10px;
+    display: flex;
+    align-items: baseline; /* Align items to the baseline */
+    color: var(--text-color); /* Text color */
+    flex-wrap: wrap; /* Allow text to wrap on smaller screens */
+}
+
+.beer .number {
+    font-size: 29pt;
+    font-weight: normal;
+    margin-right: 10px;
+    color: var(--text-color);
+}
+
+.beer .name {
+    font-size: 29pt;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.beer .by {
+    font-size: 18pt; /* Slightly smaller font size */
+    font-weight: normal;
+    margin: 0 5px;
+    color: var(--text-color);
+}
+
+.beer .brewery,
+.beer .type,
+.beer .abv {
+    font-size: 21pt;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.beer.faded p {
+    opacity: 0.1;
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+    .beer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .beer p {
+        font-size: 20px; /* Adjust font size for smaller screens */
+    }
+}

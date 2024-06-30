@@ -1,0 +1,162 @@
+[
+  {
+    "name": "Ekto Kooler",
+    "brewery": "Eagle Park Brewing Co",
+    "type": "Hard Seltzer",
+    "abv": "5.0%",
+    "empty": false,
+    "hide": false
+  },
+  {
+    "name": "Two Hearted",
+    "brewery": "Bell's Brewery",
+    "type": "IPA",
+    "abv": "7.0%",
+    "empty": false,
+    "hide": false
+  },
+  {
+    "name": "Gumballhead",
+    "brewery": "3 Floyds Brewing",
+    "type": "Wheat APA",
+    "abv": "5.6%",
+    "empty": false,
+    "hide": false
+  },
+  {
+    "name": "15-2",
+    "brewery": "3 Sheeps Brewing",
+    "type": "Stout",
+    "abv": "7.2%",
+    "empty": false,
+    "hide": false
+  },
+  {
+    "name": "Mango Cart",
+    "brewery": "Golden Road Brewing",
+    "type": "Mango Wheat",
+    "abv": "4.0%",
+    "empty": false,
+    "hide": false
+  },
+  {
+    "name": "Gumballhead",
+    "brewery": "3 Floyds Brewing",
+    "type": "Wit APA",
+    "abv": "4.8%",
+    "empty": false,
+    "hide": false
+  },
+  {
+    "name": "Lavender Lemonade",
+    "brewery": "Third Space",
+    "type": "Fruited Sour",
+    "abv": "6.0%",
+    "empty": false,
+    "hide": false
+  },
+  {
+    "name": "Lakefront IPA",
+    "brewery": "Lakefront Brewery",
+    "type": "IPA",
+    "abv": "6.7%",
+    "empty": false,
+    "hide": false
+  },
+  {
+    "name": "Furious",
+    "brewery": "Surly Brewing Co",
+    "type": "IPA",
+    "abv": "6.7%",
+    "empty": false,
+    "hide": false
+  },
+  {
+    "name": "Spotted Cow",
+    "brewery": "New Glarus Brewing",
+    "type": "Farmhouse Ale",
+    "abv": "4.8%",
+    "empty": false,
+    "hide": false
+  },
+  {
+    "name": "Radiant Haze",
+    "brewery": "Toppling Goliath",
+    "type": "IPA",
+    "abv": "7.0%",
+    "empty": false,
+    "hide": false
+  },
+  {
+    "name": "Warped Speed",
+    "brewery": "Lake Louie Brewing",
+    "type": "Scotch Ale",
+    "abv": "6.9%",
+    "empty": false,
+    "hide": false
+  },
+  {
+    "name": "Fat Tire",
+    "brewery": "New Belgium Brewing",
+    "type": "Ale",
+    "abv": "5.2%",
+    "empty": false,
+    "hide": false
+  },
+  {
+    "name": "Mortal Bloom",
+    "brewery": "Founders Brewing",
+    "type": "Hazy IPA",
+    "abv": "6.2%",
+    "empty": false,
+    "hide": false
+  },
+  {
+    "name": "Wild Apple",
+    "brewery": "Wild State Cider",
+    "type": "Cider",
+    "abv": "6.3%",
+    "empty": false,
+    "hide": false
+  },
+  {
+    "name": "Stone Hazy",
+    "brewery": "Stone Brewing",
+    "type": "Hazy IPA",
+    "abv": "6.7%",
+    "empty": false,
+    "hide": false
+  },
+  {
+    "name": "Peach Mango",
+    "brewery": "Downeast Cider",
+    "type": "Cider",
+    "abv": "5.0%",
+    "empty": false,
+    "hide": false
+  },
+  {
+    "name": "Farmer's Market",
+    "brewery": "Saturday Beer Co.",
+    "type": "Fruited Sour",
+    "abv": "4.2%",
+    "empty": false,
+    "hide": false
+  },
+  {
+    "name": "Cold Time",
+    "brewery": "Revolution Brewing",
+    "type": "Lager",
+    "abv": "4.8%",
+    "empty": false,
+    "hide": false
+  },
+  {
+    "name": "Electric Sunshine",
+    "brewery": "Avery Brewing",
+    "type": "Fruited Sour Ale",
+    "abv": "5.1%",
+    "empty": false,
+    "hide": false
+  }
+]

@@ -1,0 +1,50 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Taplist Admin</title>
+  <style>
+    /* add some basic styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #5c5c5c; /* light gray background */
+    }
+    #ip-input-container {
+      margin-top: 20px;
+    }
+    button[type="submit"] {
+      background-color: #97a85a;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button[type="submit"]:hover {
+      background-color: #84a800;
+    }
+    h1 {
+      color: #ffa500; /* orange text */
+    }
+  </style>
+</head>
+<body>
+  <h1>Taplist Admin</h1>
+  <div id="ip-input-container">
+    <label for="ip-address"><font color="white">What's your taplists IP address?</font></label><br>
+    <input type="text" id="ip-address" placeholder="Enter IP address" />
+    <button type="submit" onclick="goToAdminPage()">Go</button>
+  </div>
+
+  <script>
+    function goToAdminPage() {
+      const ipAddress = document.getElementById('ip-address').value;
+      if (ipAddress) {
+        window.location.href = 'http://' + ipAddress + ':3000/admin.html';
+      } else {
+        alert('Please enter a valid IP address!');
+      }
+    }
+  </script>
+</body>
+</html>
