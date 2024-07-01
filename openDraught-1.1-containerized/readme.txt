@@ -35,14 +35,13 @@ docker --version
 
 *** Run this in DigitalOcean ubuntu terminal to allocate port 3000 to the docker container ***
 
-docker run -d -p 3000:3000 anderwolfe/opendraught:2
+docker run -d -p 3000:3000 dockerhub_username/projectname:tag   <-- fill in your docker hub path here
 
 ◘◘◘◘◘
 
 *** Type this in ubuntu terminal to run the docker container ***
 
 docker run dockerhub_username/projectname:tag   <-- fill in your docker hub path here
-for example, this is my docker hub path: anderwolfe/opendraught:2
 
 ◘◘◘◘◘
 
