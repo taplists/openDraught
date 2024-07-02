@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Edit Tap List</title>
+    <style>
+        .editable {
+            border: 1px solid #000;
+            padding: 5px;
+        }
+        .faded {
+            opacity: 0.5;
+        }
+        #editButton, #saveButton, #normalColorsButton, #btbColorsButton {
+            font-size: 2em; /* Increase font size */
+            padding: 10px 20px;
+            margin: 5px;
+        }
+        .top-right-buttons {
+            display: flex;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Edit Tap List</h1>
+ <!--
+            This commented out section can be uncommented to implement buttons to change between color + banner schemes
+            -------------------------------------------------
+
+    <div class="top-right-buttons">
+        <button id="normalColorsButton">Normal Colors</button>
+        <button id="btbColorsButton">Event Colors</button>
+    </div>
+-->    
+    <button id="editButton">Edit</button>
+    <button id="saveButton" style="display: none;">Save</button>
+    <div id="tapList">
+        <!-- Beer list will be populated here -->
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tapListDiv = document.getElementById('tapList');
+            const editButton = document.getElementById('editButton');
+            const saveButton = document.getElementById('saveButton');
+            const normalColorsButton = document.getElementById('normalColorsButton');
+            const btbColorsButton = document.getElementById('btbColorsButton');
+
+            fetch('/beers')
+                .then(response => response.json())
+                .then(beers => {
+                    beers.forEach((beer, index) => {
+                        const beerDiv = document.createElement('div');
+                        beerDiv.innerHTML = `
+                            <p>
+                                <span class="number">${index + 1}.</span>
+                                <span class="name">${beer.name}</span>
+                                <span class="by"> by </span>
+                                <span class="brewery">${beer.brewery}</span> - 
+                                <span class="type">${beer.type}</span> - 
+                                <span class="abv">${beer.abv}</span>
+                                <label>Empty <input type="checkbox" data-field="empty" ${beer.empty ? 'checked' : ''} disabled></label>
+                                <label>Hide <input type="checkbox" data-field="hide" ${beer.hide ? 'checked' : ''} disabled></label>
+                                <label>Highlight <input type="checkbox" data-field="highlight" ${beer.highlight ? 'checked' : ''} disabled></label>
+                            </p>`;
+                        beerDiv.dataset.index = index;
+                        if (beer.empty) {
+                            beerDiv.classList.add('faded');
+                        }
+                        tapListDiv.appendChild(beerDiv);
+                    });
+                });
+
+            editButton.addEventListener('click', () => {
+                const beerDivs = tapListDiv.querySelectorAll('div');
+                beerDivs.forEach(div => {
+                    const index = div.dataset.index;
+                    const spans = div.querySelectorAll('span');
+                    const name = spans[1].textContent;
+                    const brewery = spans[3].textContent;
+                    const type = spans[4].textContent;
+                    const abv = spans[5].textContent;
+                    const empty = div.querySelector('input[data-field="empty"]').checked;
+                    const hide = div.querySelector('input[data-field="hide"]').checked;
+                    const highlight = div.querySelector('input[data-field="highlight"]').checked;
+
+                    div.innerHTML = `
+                        <span class="number">${index + 1}.</span>
+                        <input type="text" value="${name}" data-field="name">
+                        <span class="by"> by </span>
+                        <input type="text" value="${brewery}" data-field="brewery">
+                        - <input type="text" value="${type}" data-field="type">
+                        - <input type="text" value="${abv}" data-field="abv">
+                        <label>Empty <input type="checkbox" data-field="empty" ${empty ? 'checked' : ''}></label>
+                        <label>Hide <input type="checkbox" data-field="hide" ${hide ? 'checked' : ''}></label>
+                        <label>Highlight <input type="checkbox" data-field="highlight" ${highlight ? 'checked' : ''}></label>
+                    `;
+                    div.classList.add('editable');
+                    if (empty) {
+                        div.classList.add('faded');
+                    }
+                });
+                editButton.style.display = 'none';
+                saveButton.style.display = 'block';
+            });
+
+            saveButton.addEventListener('click', () => {
+                const updatedBeers = [];
+                const beerDivs = tapListDiv.querySelectorAll('div');
+                beerDivs.forEach(div => {
+                    const inputs = div.querySelectorAll('input[type="text"]');
+                    const checkboxes = div.querySelectorAll('input[type="checkbox"]');
+                    const beer = {};
+                    inputs.forEach(input => {
+                        const field = input.dataset.field;
+                        beer[field] = input.value;
+                    });
+                    checkboxes.forEach(checkbox => {
+                        const field = checkbox.dataset.field;
+                        beer[field] = checkbox.checked;
+                    });
+                    updatedBeers.push(beer);
+                });
+
+                fetch('/save-beers', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(updatedBeers)
+                })
+                .then(response => response.text())
+                .then(result => {
+                    if (result === 'Beers saved successfully') {
+                        beerDivs.forEach((div, index) => {
+                            const beer = updatedBeers[index];
+                            div.innerHTML = `
+                                <p>
+                                    <span class="number">${index + 1}.</span>
+                                    <span class="name">${beer.name}</span>
+                                    <span class="by"> by </span>
+                                    <span class="brewery">${beer.brewery}</span> - 
+                                    <span class="type">${beer.type}</span> - 
+                                    <span class="abv">${beer.abv}</span>
+                                    <label>Empty <input type="checkbox" data-field="empty" ${beer.empty ? 'checked' : ''} disabled></label>
+                                    <label>Hide <input type="checkbox" data-field="hide" ${beer.hide ? 'checked' : ''} disabled></label>
+                                    <label>Highlight <input type="checkbox" data-field="highlight" ${beer.highlight ? 'checked' : ''} disabled></label>
+                                </p>`;
+                            div.classList.remove('editable');
+                            if (beer.empty) {
+                                div.classList.add('faded');
+                            } else {
+                                div.classList.remove('faded');
+                            }
+                        });
+                        editButton.style.display = 'block';
+                        saveButton.style.display = 'none';
+                    } else {
+                        alert(result);
+                    }
+                })
+                .catch(error => {
+                    alert('Failed to save beers');
+                    console.error(error);
+                });
+            });
+
+            const updateColors = async (colors, bannerImage) => {
+                try {
+                    const response = await fetch('/save-colors', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(colors)
+                    });
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    alert('Colors updated successfully');
+                    await updateBannerImage(bannerImage);
+                } catch (error) {
+                    console.error('Failed to update colors:', error);
+                    alert('Failed to update colors');
+                }
+            };
+
+            const updateBannerImage = async (bannerImage) => {
+                try {
+                    const response = await fetch('/update-banner', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ bannerImage })
+                    });
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    alert('Banner image updated successfully');
+                } catch (error) {
+                    console.error('Failed to update banner image:', error);
+                    alert('Failed to update banner image');
+                }
+            };
+
+            normalColorsButton.addEventListener('click', () => {
+                updateColors({ evenColor: '#f58d72', oddColor: '#fcda81' }, 'banner.jpg');
+            });
+
+            btbColorsButton.addEventListener('click', () => {
+                updateColors({ evenColor: '#b4ced5', oddColor: '#dbdce0' }, 'btb-banner.png');
+            });
+        });
+    </script>
+</body>
+</html>
