@@ -14,6 +14,14 @@ Note that you'll want to change your admin password and secure string in the .en
 
 You'll also want edit the image line in docker-compose to your Docker Hub details.
 
+◘◘◘◘
+
+Google Chrome is the recommended browser for openDraught.
+If scaling is necessary to fit the tap list on to your screen, with your tap list open in Chrome: press the Ctrl + or Ctrl - hotkeys to scale page as needed.
+
+Chrome remembers individual web page scaling so your scaling should save.
+
+If you need more info on scaling or want to know how to check your saved scaling. Please view the Scaling Explanation pdf file located in our GitHub repo.
 
 ◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘
 
