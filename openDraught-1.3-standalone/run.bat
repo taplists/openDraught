@@ -8,6 +8,6 @@ echo  \___/^| .__/ \___^|_^| ^|_^|\__,_^|_^|  \__,_^|\__,_^|\__, ^|_^| ^|_^|\__^
 echo       ^| ^|                                      __/ ^|          
 echo       ^|_^|                                     ^|___/           
 echo ver 1.3
-start taplist.url
 @echo Closing this window will end openDraught and your taplist will be unaccessible until you open openDraught again
+powershell.exe -ExecutionPolicy Bypass -File "open_fullscreen.ps1"
 node server.js
