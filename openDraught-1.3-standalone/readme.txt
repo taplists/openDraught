@@ -12,7 +12,7 @@ Note that you'll want to change your admin password and secure string in the .en
 
 ◘◘◘◘
 
-Once Node is installed > double click openDraught to launch openDraught which will automatically launch a browser window with your taplist in it
+Once Node is installed > double click openDraught_SETUP to install openDraught which will install and give you the option to run openDraught automatically when the computer boots up.
 
 ◘◘◘◘
 
